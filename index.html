@@ -1,0 +1,631 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Limra Gems — Fine Jewelry, Diamonds & Gemstones</title>
+<meta name="description" content="Limra Gems: Art Deco-inspired fine jewelry in coloured gemstones and diamonds. Rings, earrings, necklaces and bracelets, made in our atelier for over two decades.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F3F2EF;
+    --velvet:#DAD7D1;
+    --velvet-deep:#C7C3BB;
+    --ink:#101B33;
+    --ink-soft:#3B4458;
+    --champagne:#C9AA6B;
+    --champagne-deep:#A98A4C;
+    --ruby:#9A1D3C;
+    --white:#FFFFFF;
+    --display:"Bodoni Moda", "Didot", "Times New Roman", serif;
+    --body:"Jost", "Futura", "Helvetica Neue", sans-serif;
+    --oct:polygon(29% 0,71% 0,100% 29%,100% 71%,71% 100%,29% 100%,0 71%,0 29%);
+    --gutter:clamp(16px,5vw,72px);
+    --max:1440px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto} *{transition:none!important;animation:none!important}}
+  body{background:var(--paper);color:var(--ink);font-family:var(--body);font-weight:300;font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+  img{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+  button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+  :focus-visible{outline:2px solid var(--champagne-deep);outline-offset:3px}
+
+  h1,h2,h3,.display{font-family:var(--display);font-weight:400;line-height:1.05;letter-spacing:-.01em}
+  h2{font-size:clamp(34px,4.6vw,64px)}
+  h3{font-size:clamp(22px,2.2vw,30px)}
+  p.lede{font-size:clamp(18px,1.5vw,21px);line-height:1.55;max-width:34em}
+  .muted{color:var(--ink-soft)}
+  .wrap{max-width:var(--max);margin:0 auto;padding-inline:var(--gutter)}
+  section{padding-block:clamp(72px,9vw,140px)}
+
+  /* ---------- nav ---------- */
+  .nav{position:sticky;top:0;z-index:50;background:rgba(243,242,239,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--velvet)}
+  .nav .wrap{display:flex;align-items:center;justify-content:space-between;height:76px}
+  .brand{display:flex;align-items:center;gap:14px}
+  .brand svg{width:40px;height:40px}
+  .brand .word{font-family:var(--display);font-size:24px;letter-spacing:.32em;padding-left:.32em;line-height:1}
+  .brand small{display:block;font-family:var(--body);font-size:10px;letter-spacing:.22em;color:var(--ink-soft);margin-top:4px;text-align:center}
+  .links{display:flex;gap:34px;font-size:15px;font-weight:400}
+  .links a{position:relative;padding:6px 0}
+  .links a::after{content:"";position:absolute;left:0;right:100%;bottom:0;height:1px;background:var(--ink);transition:right .3s}
+  .links a:hover::after{right:0}
+  .enquire{border:1px solid var(--ink);padding:10px 22px;font-size:14px;font-weight:400;letter-spacing:.04em;transition:background .25s,color .25s}
+  .enquire:hover{background:var(--ink);color:var(--paper)}
+  .burger{display:none;width:44px;height:44px;align-items:center;justify-content:center}
+  .burger span{display:block;width:22px;height:1px;background:var(--ink);position:relative}
+  .burger span::before,.burger span::after{content:"";position:absolute;left:0;width:22px;height:1px;background:var(--ink)}
+  .burger span::before{top:-7px}.burger span::after{top:7px}
+  .mobile-menu{display:none;background:var(--paper);border-bottom:1px solid var(--velvet)}
+  .mobile-menu a{display:block;padding:16px var(--gutter);border-top:1px solid var(--velvet);font-weight:400}
+  .mobile-menu.open{display:block}
+  @media (max-width:980px){.links,.nav .enquire{display:none}.burger{display:flex}}
+  @media (max-width:480px){.brand small{display:none}.brand .word{font-size:22px}}
+
+  /* ---------- hero ---------- */
+  .hero{padding:0;display:grid;grid-template-columns:1fr 1fr;min-height:calc(100vh - 76px)}
+  .hero-text{display:flex;flex-direction:column;justify-content:center;padding:clamp(48px,7vw,110px) var(--gutter) clamp(48px,7vw,110px) max(var(--gutter),calc((100vw - var(--max))/2 + var(--gutter)))}
+  .hero h1{font-size:clamp(44px,5.4vw,88px);line-height:1;margin-bottom:28px;max-width:8.5em}
+  .hero h1 em{font-style:italic;font-weight:400}
+  .hero p{max-width:30em;margin-bottom:40px}
+  .hero-ctas{display:flex;gap:28px;align-items:center;flex-wrap:wrap}
+  .btn{display:inline-block;background:var(--ink);color:var(--paper);padding:16px 34px;font-weight:400;font-size:15px;letter-spacing:.04em;transition:background .25s}
+  .btn:hover{background:var(--ink-soft)}
+  .textlink{font-weight:400;border-bottom:1px solid var(--champagne-deep);padding-bottom:2px}
+  .hero-img{position:relative;overflow:hidden;background:var(--velvet)}
+  .hero-img img{width:100%;height:100%;object-fit:cover;object-position:80% 20%}
+  .hero-img .caption{position:absolute;left:28px;bottom:24px;color:var(--white);font-size:13px;letter-spacing:.08em;text-shadow:0 1px 10px rgba(0,0,0,.4)}
+  .hero-foot{display:flex;gap:clamp(24px,4vw,64px);margin-top:clamp(40px,6vw,80px);padding-top:28px;border-top:1px solid var(--velvet-deep);font-size:14px;color:var(--ink-soft)}
+  .hero-foot b{display:block;font-family:var(--display);font-weight:400;font-size:26px;color:var(--ink);letter-spacing:0}
+  @media (max-width:860px){.hero{grid-template-columns:1fr;min-height:0}.hero-img{aspect-ratio:4/4.4;order:-1}.hero-text{padding-inline:var(--gutter)}}
+
+  /* ---------- collections ---------- */
+  .intro{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:end;margin-bottom:clamp(40px,5vw,72px)}
+  .intro p{justify-self:end;max-width:28em}
+  @media (max-width:860px){.intro{grid-template-columns:1fr;gap:20px}.intro p{justify-self:start}}
+  .cats{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(16px,2.5vw,40px)}
+  .cat{text-align:center}
+  .cat .oct{clip-path:var(--oct);aspect-ratio:1;overflow:hidden;background:var(--velvet);margin-bottom:22px}
+  .cat .oct img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+  .cat:hover .oct img{transform:scale(1.05)}
+  .cat h3{margin-bottom:4px}
+  .cat span{font-size:14px;color:var(--ink-soft)}
+  @media (max-width:860px){.cats{grid-template-columns:repeat(2,1fr)}}
+
+  /* ---------- deco edit ---------- */
+  .edit{background:var(--velvet)}
+  .edit-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(24px,4vw,64px);align-items:stretch}
+  .edit-main{overflow:hidden;background:var(--velvet-deep);aspect-ratio:4/4.6}
+  .edit-main img{width:100%;height:100%;object-fit:cover;object-position:50% 30%}
+  .edit-side{display:flex;flex-direction:column;justify-content:space-between;gap:36px}
+  .edit-side h2{max-width:9em}
+  .edit-mini{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .edit-mini figure{cursor:pointer}
+  .edit-mini .ph{aspect-ratio:3/4;overflow:hidden;background:var(--white)}
+  .edit-mini img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+  .edit-mini figure:hover img{transform:scale(1.06)}
+  .edit-mini figcaption{font-size:14px;margin-top:10px}
+  .edit-mini figcaption i{display:block;font-style:normal;color:var(--ink-soft);font-size:13px}
+  @media (max-width:860px){.edit-grid{grid-template-columns:1fr}.edit-main{aspect-ratio:4/3}}
+
+  /* ---------- product galleries ---------- */
+  .gal-head{display:flex;justify-content:space-between;align-items:baseline;gap:24px;margin-bottom:clamp(32px,4vw,56px);flex-wrap:wrap}
+  .gal-head p{max-width:30em}
+  .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(16px,2.5vw,36px) clamp(14px,2vw,28px)}
+  .item{cursor:pointer;text-align:left}
+  .item .ph{aspect-ratio:4/5;overflow:hidden;background:var(--white);position:relative}
+  .item .ph img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+  .item:hover .ph img{transform:scale(1.05)}
+  .item .meta{display:flex;justify-content:space-between;gap:12px;margin-top:14px;font-size:15px}
+  .item .meta b{font-weight:400;display:block}
+  .item .meta i{font-style:normal;color:var(--ink-soft);font-size:14px}
+  .item .meta .price{white-space:nowrap;color:var(--ink-soft);font-size:14px}
+  .item.tall{grid-row:span 2}
+  .item.tall .ph{aspect-ratio:auto;height:100%}
+  .item.wide{grid-column:span 2}
+  .item.wide .ph{aspect-ratio:8/5}
+  .item.model .ph{background:var(--velvet)}
+  @media (max-width:980px){.grid{grid-template-columns:repeat(3,1fr)}}
+  @media (max-width:640px){.grid{grid-template-columns:repeat(2,1fr)}.item.tall{grid-row:span 1}.item.tall .ph{aspect-ratio:4/5;height:auto}.item.wide{grid-column:span 2}}
+
+
+  /* ---------- worn (home) ---------- */
+  .worn-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2.5vw,40px)}
+  .worn-item{display:block}
+  .worn-item .ph{aspect-ratio:4/5;overflow:hidden;background:var(--velvet)}
+  .worn-item img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+  .worn-item:hover img{transform:scale(1.04)}
+  .worn-item span{display:block;margin-top:14px;font-size:15px}
+  .worn-item span i{display:block;font-style:normal;font-size:13px;color:var(--ink-soft)}
+  .worn-item.up{margin-top:clamp(-80px,-6vw,-32px)}
+  .worn-grid .worn-item:nth-child(-n+3).up{margin-top:0;padding-top:clamp(32px,6vw,80px)}
+  @media (max-width:760px){.worn-grid{grid-template-columns:repeat(2,1fr)}.worn-item.up{margin-top:0;padding-top:0}.worn-grid .worn-item:nth-child(-n+3).up{padding-top:0}}
+
+  /* ---------- category view ---------- */
+  .cat-head{padding-block:clamp(40px,5vw,72px) clamp(40px,5vw,72px)}
+  .back{display:inline-block;font-size:14px;color:var(--ink-soft);margin-bottom:28px;border-bottom:1px solid var(--velvet-deep);padding-bottom:2px}
+  .back::before{content:"\2190\00a0"}
+  .back:hover{color:var(--ink)}
+  .cat-head-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,96px);align-items:center}
+  .cat-head h1{font-size:clamp(44px,6vw,92px)}
+  .cat-hero{aspect-ratio:4/3;overflow:hidden;clip-path:var(--oct);background:var(--velvet)}
+  .cat-hero img{width:100%;height:100%;object-fit:cover}
+  .cat-body{padding-top:0}
+  .cat-body.dark{padding-top:clamp(56px,7vw,100px);margin-top:clamp(24px,3vw,48px)}
+  .cat-body.dark .brace-feature{margin-top:clamp(48px,6vw,96px)}
+  .cat-body .grid.wide-rows{grid-template-columns:1fr 1fr}
+  .cat-body .grid.wide-rows .item .ph{aspect-ratio:21/9}
+  .cat-more{background:var(--velvet)}
+  .cat-more .cats{grid-template-columns:repeat(3,1fr);max-width:1000px}
+  .cat-more .cat .oct{max-width:300px;margin-inline:auto}
+  @media (max-width:860px){.cat-head-grid{grid-template-columns:1fr}.cat-hero{max-width:460px}.cat-more .cats{grid-template-columns:repeat(3,1fr)}}
+  @media (max-width:560px){.cat-body .grid.wide-rows{grid-template-columns:1fr}.cat-more .cats{grid-template-columns:1fr 1fr}}
+
+  /* ---------- quote band ---------- */
+  .band{background:var(--white);padding-block:clamp(56px,7vw,100px);text-align:center}
+  .band blockquote{font-family:var(--display);font-size:clamp(26px,3.4vw,46px);line-height:1.2;max-width:22em;margin:0 auto 20px}
+  .band cite{font-style:normal;font-size:14px;color:var(--ink-soft);letter-spacing:.06em}
+
+  /* ---------- bracelets (dark) ---------- */
+  .dark{background:var(--ink);color:var(--paper)}
+  .dark .muted{color:#AEB5C6}
+  .dark .item .ph{background:#000}
+  .dark .item .meta i,.dark .item .meta .price{color:#AEB5C6}
+  .dark .textlink{border-color:var(--champagne)}
+  .brace-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(16px,2.5vw,36px)}
+  .brace-grid .item .ph{aspect-ratio:21/9}
+  .brace-feature{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,64px);margin-top:clamp(32px,4vw,56px);align-items:center}
+  .brace-feature .ph{aspect-ratio:1;overflow:hidden;clip-path:var(--oct)}
+  .brace-feature img{width:100%;height:100%;object-fit:cover}
+  @media (max-width:760px){.brace-grid,.brace-feature{grid-template-columns:1fr}}
+
+  /* ---------- stones ---------- */
+  .stones-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,96px);align-items:center}
+  .stones-grid .ph{overflow:hidden;background:var(--velvet);aspect-ratio:1}
+  .stones-grid img{width:100%;height:100%;object-fit:cover}
+  .stone-list{list-style:none;columns:2;column-gap:40px;margin-top:36px}
+  .stone-list li{break-inside:avoid;padding:14px 0;border-top:1px solid var(--velvet-deep);display:flex;align-items:baseline;gap:14px}
+  .stone-list li:last-child,.stone-list li:nth-child(4){border-bottom:1px solid var(--velvet-deep)}
+  .stone-list .dot{width:12px;height:12px;flex:none;clip-path:var(--oct);position:relative;top:1px}
+  .stone-list b{font-family:var(--display);font-weight:400;font-size:21px;letter-spacing:0}
+  .stone-list span{font-size:14px;color:var(--ink-soft)}
+  @media (max-width:860px){.stones-grid{grid-template-columns:1fr}.stone-list{columns:1}}
+
+  /* ---------- atelier ---------- */
+  .atelier{background:var(--velvet)}
+  .at-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:clamp(16px,2.5vw,36px);margin-top:clamp(36px,5vw,72px)}
+  .at-grid .ph{overflow:hidden;background:var(--velvet-deep)}
+  .at-grid .ph img{width:100%;height:100%;object-fit:cover}
+  .at-grid .ph:nth-child(1){aspect-ratio:4/5}
+  .at-grid .ph:nth-child(2){aspect-ratio:4/5;margin-top:clamp(24px,5vw,80px)}
+  .at-grid .ph:nth-child(3){aspect-ratio:4/5}
+  .at-text{display:grid;grid-template-columns:1fr 1fr;gap:48px}
+  .at-text .cols{display:grid;grid-template-columns:1fr 1fr;gap:32px;font-size:15.5px}
+  .at-text .cols h3{font-size:20px;margin-bottom:10px}
+  @media (max-width:860px){.at-text{grid-template-columns:1fr}.at-grid{grid-template-columns:1fr 1fr}.at-grid .ph:nth-child(3){display:none}.at-grid .ph:nth-child(2){margin-top:0}}
+  @media (max-width:560px){.at-text .cols{grid-template-columns:1fr}}
+
+  /* ---------- visit ---------- */
+  .visit-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(32px,5vw,96px);align-items:center}
+  .visit dl{display:grid;grid-template-columns:auto 1fr;gap:14px 32px;margin-top:36px;font-size:16px}
+  .visit dt{color:var(--ink-soft)}
+  .visit dd a{border-bottom:1px solid var(--champagne-deep)}
+  .visit .ph{aspect-ratio:1;overflow:hidden;clip-path:var(--oct);background:var(--velvet)}
+  .visit img{width:100%;height:100%;object-fit:cover;object-position:50% 65%}
+  .visit .ctas{display:flex;gap:16px;margin-top:40px;flex-wrap:wrap}
+  .btn.ghost{background:none;color:var(--ink);border:1px solid var(--ink)}
+  .btn.ghost:hover{background:var(--ink);color:var(--paper)}
+  @media (max-width:860px){.visit-grid{grid-template-columns:1fr}.visit .ph{max-width:420px}}
+
+  /* ---------- footer ---------- */
+  footer{background:var(--ink);color:#AEB5C6;padding:56px 0 32px;font-size:14px}
+  footer .top{display:flex;justify-content:space-between;align-items:flex-start;gap:32px;flex-wrap:wrap;padding-bottom:40px;border-bottom:1px solid #26314C;margin-bottom:24px}
+  footer .brand .word{color:var(--paper)}
+  footer .brand small{color:#AEB5C6}
+  footer .brand svg path,footer .brand svg polygon{stroke:var(--paper)}
+  footer .brand svg text{fill:var(--paper)}
+  footer nav{display:flex;gap:28px;flex-wrap:wrap}
+  footer nav a:hover{color:var(--paper)}
+  footer .bottom{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+  /* ---------- lightbox ---------- */
+  .lb{position:fixed;inset:0;z-index:100;background:rgba(16,27,51,.78);display:none;align-items:center;justify-content:center;padding:24px}
+  .lb.open{display:flex}
+  .lb-card{background:var(--paper);max-width:1040px;width:100%;max-height:92vh;display:grid;grid-template-columns:1.1fr .9fr;overflow:hidden}
+  .lb-img{background:var(--white);min-height:320px}
+  .lb-img img{width:100%;height:100%;object-fit:contain;max-height:92vh}
+  .lb-body{padding:clamp(28px,4vw,56px);display:flex;flex-direction:column;gap:18px;overflow:auto;position:relative}
+  .lb-body h3{font-size:clamp(28px,3vw,40px)}
+  .lb-body .cat{text-align:left;font-size:14px;color:var(--ink-soft)}
+  .lb-body .price{font-family:var(--display);font-size:24px}
+  .lb-body dl{display:grid;grid-template-columns:auto 1fr;gap:8px 24px;font-size:15px;margin-top:6px}
+  .lb-body dt{color:var(--ink-soft)}
+  .lb-body .btn{align-self:flex-start;margin-top:auto}
+  .lb-close{position:absolute;top:14px;right:14px;width:44px;height:44px;font-size:28px;line-height:1}
+  .lb-note{font-size:13px;color:var(--ink-soft)}
+  @media (max-width:760px){.lb-card{grid-template-columns:1fr;overflow:auto}.lb-img{max-height:50vh}.lb-img img{max-height:50vh}}
+</style>
+</head>
+<body>
+
+<!-- =============== NAV =============== -->
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Limra Gems home">
+      <svg viewBox="0 0 100 100" aria-hidden="true">
+        <polygon points="30,4 70,4 96,30 96,70 70,96 30,96 4,70 4,30" fill="none" stroke="#101B33" stroke-width="3"/>
+        <text x="22" y="62" font-family="Bodoni Moda, Didot, serif" font-size="54" fill="#101B33">L</text>
+        <text x="44" y="84" font-family="Bodoni Moda, Didot, serif" font-size="54" font-style="italic" fill="#101B33">A</text>
+      </svg>
+      <span><span class="word">LIMRA</span><small>FINE JEWELRY · DIAMONDS · GEMSTONES</small></span>
+    </a>
+    <nav class="links" aria-label="Primary">
+      <a href="#collections">Collections</a>
+      <a href="#/rings">Rings</a>
+      <a href="#/earrings">Earrings</a>
+      <a href="#/necklaces">Necklaces</a>
+      <a href="#/bracelets">Bracelets</a>
+      <a href="#atelier">Atelier</a>
+      <a href="#visit">Visit</a>
+    </nav>
+    <a class="enquire" href="#visit">Book an appointment</a>
+    <button class="burger" aria-label="Open menu" aria-expanded="false" onclick="toggleMenu(this)"><span></span></button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#collections">Collections</a><a href="#/rings">Rings</a><a href="#/earrings">Earrings</a><a href="#/necklaces">Necklaces</a><a href="#/bracelets">Bracelets</a><a href="#atelier">Atelier</a><a href="#visit">Visit &amp; appointments</a>
+  </div>
+</header>
+
+<main id="top">
+<div id="viewHome">
+
+<!-- =============== HERO =============== -->
+<section class="hero">
+  <div class="hero-text">
+    <h1>Coloured stones, set in the <em>Deco</em> spirit.</h1>
+    <p class="lede">Sapphire, emerald, ruby and tanzanite, framed in diamonds and cut with the geometry of the 1920s. Every piece is made in our own atelier.</p>
+    <div class="hero-ctas">
+      <a class="btn" href="#collections">Explore the collections</a>
+      <a class="textlink" href="#atelier">Commission a bespoke piece</a>
+    </div>
+    <div class="hero-foot">
+      <div><b>20+</b> years in gems and diamonds</div>
+      <div><b>Certified</b> natural stones</div>
+      <div><b>Worldwide</b> insured shipping, free returns</div>
+    </div>
+  </div>
+  <div class="hero-img">
+    <img src="assets/hero-05.jpg" alt="Model wearing an aquamarine pendant on a sapphire bead chain" fetchpriority="high">
+  </div>
+</section>
+
+<!-- =============== COLLECTIONS =============== -->
+<section id="collections">
+  <div class="wrap">
+    <div class="intro">
+      <h2>The collections</h2>
+      <p class="muted">Four families, one language: a centre stone chosen for its colour, a frame of calibré-cut sapphires or rubies, and diamonds to carry the light.</p>
+    </div>
+    <div class="cats">
+      <a class="cat" href="#/rings"><div class="oct"><img src="assets/ring-16.jpg" alt="Tanzanite ring with sapphire and diamond frame"></div><h3>Rings</h3><span>Cocktail, plaque and halo settings</span></a>
+      <a class="cat" href="#/earrings"><div class="oct"><img src="assets/earring-02.jpg" alt="Aquamarine chandelier earrings"></div><h3>Earrings</h3><span>Drops, chandeliers and studs</span></a>
+      <a class="cat" href="#/necklaces"><div class="oct"><img src="assets/model-necklace-02.jpg" alt="Sapphire flower lariat on model"></div><h3>Necklaces</h3><span>Pendants, lariats and strands</span></a>
+      <a class="cat" href="#/bracelets"><div class="oct"><img src="assets/bangle-05.jpg" alt="Emerald and ruby line bracelet on wrist"></div><h3>Bracelets</h3><span>Line bracelets and tennis rows</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- =============== DECO EDIT =============== -->
+<section class="edit">
+  <div class="wrap edit-grid">
+    <div class="edit-main"><img src="assets/model-earring-02.jpg" alt="Model wearing sapphire and diamond drop earrings" loading="lazy"></div>
+    <div class="edit-side">
+      <div>
+        <h2>The Deco edit</h2>
+        <p class="lede muted" style="margin-top:20px">Stepped shoulders, geometric plaques, channels of calibré rubies. These are the pieces that started the house, and the ones we still reach for first.</p>
+      </div>
+      <div class="edit-mini">
+        <figure onclick="openItem('r10')"><div class="ph"><img src="assets/ring-10.jpg" alt="Ruby and diamond Art Deco plaque ring" loading="lazy"></div><figcaption>Boulevard plaque ring<i>Ruby, diamond</i></figcaption></figure>
+        <figure onclick="openItem('e04')"><div class="ph"><img src="assets/earring-04.jpg" alt="Sapphire and diamond bow drop earrings" loading="lazy"></div><figcaption>Ribbon drops<i>Sapphire, diamond</i></figcaption></figure>
+        <figure onclick="openItem('e03')"><div class="ph"><img src="assets/earring-03.jpg" alt="Emerald and baguette diamond shield earrings" loading="lazy"></div><figcaption>Shield earrings<i>Emerald, baguette diamond</i></figcaption></figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =============== WORN =============== -->
+<section class="worn">
+  <div class="wrap">
+    <div class="intro">
+      <h2>Worn, not just displayed</h2>
+      <p class="muted">A stone looks different against skin than on velvet. These are our pieces as they are meant to be seen, on the way out for the evening.</p>
+    </div>
+    <div class="worn-grid">
+      <a class="worn-item" href="#/earrings"><div class="ph"><img src="assets/model-earring-04.jpg" alt="Model wearing coral, emerald and diamond drop earrings" loading="lazy"></div><span>Coral and emerald drops<i>Earrings</i></span></a>
+      <a class="worn-item up" href="#/rings"><div class="ph"><img src="assets/hero-02.jpg" alt="Tanzanite ring against a shower of light" loading="lazy"></div><span>Emerald-cut tanzanite<i>Rings</i></span></a>
+      <a class="worn-item" href="#/necklaces"><div class="ph"><img src="assets/model-necklace-03.jpg" alt="Model wearing a coral and emerald bead necklace" loading="lazy"></div><span>Riviera strand<i>Necklaces</i></span></a>
+      <a class="worn-item up" href="#/bracelets"><div class="ph"><img src="assets/bangle-05.jpg" alt="Emerald and ruby line bracelet on wrist" loading="lazy"></div><span>Emerald and ruby line bracelet<i>Bracelets</i></span></a>
+      <a class="worn-item" href="#/rings"><div class="ph"><img src="assets/hero-04.jpg" alt="Pear tanzanite ring on gold silk" loading="lazy"></div><span>Twilight ring<i>Rings</i></span></a>
+      <a class="worn-item up" href="#/earrings"><div class="ph"><img src="assets/model-earring-01.jpg" alt="Model wearing diamond drop earrings and a pendant" loading="lazy"></div><span>Diamond drops and pendant<i>Earrings</i></span></a>
+    </div>
+  </div>
+</section>
+
+<!-- =============== QUOTE =============== -->
+<div class="band">
+  <div class="wrap">
+    <blockquote>A good stone should be allowed to speak. Our job is to build it a quiet room.</blockquote>
+    <cite>The Limra atelier</cite>
+  </div>
+</div>
+
+<!-- =============== STONES =============== -->
+<section id="stones">
+  <div class="wrap stones-grid">
+    <div class="ph"><img src="assets/store-04.jpg" alt="Tray of loose certified gemstones in a range of colours" loading="lazy"></div>
+    <div>
+      <h2>The stones</h2>
+      <p class="lede muted" style="margin-top:20px">We began as gem dealers before we were jewellers, and we still source every stone directly. Each one comes with its certificate and, if you ask, the story of where it was cut.</p>
+      <ul class="stone-list">
+        <li><span class="dot" style="background:#1D3F8C"></span><div><b>Sapphire</b><br><span>Ceylon and Madagascar, blue through to padparadscha</span></div></li>
+        <li><span class="dot" style="background:#167A4C"></span><div><b>Emerald</b><br><span>Colombian and Zambian, minor oil only</span></div></li>
+        <li><span class="dot" style="background:#9A1D3C"></span><div><b>Ruby</b><br><span>Burmese and Mozambique, calibré and cabochon</span></div></li>
+        <li><span class="dot" style="background:#4A3FA0"></span><div><b>Tanzanite</b><br><span>Deep violet-blue, oval and pear</span></div></li>
+        <li><span class="dot" style="background:#D9D4C7"></span><div><b>Opal</b><br><span>Ethiopian crystal opal with full play of colour</span></div></li>
+        <li><span class="dot" style="background:#6FB8D6"></span><div><b>Aquamarine</b><br><span>Santa Maria blue, pear and cushion</span></div></li>
+        <li><span class="dot" style="background:#3FB7B0"></span><div><b>Turquoise</b><br><span>Sleeping Beauty, untreated</span></div></li>
+        <li><span class="dot" style="background:#111"></span><div><b>Onyx</b><br><span>Polished drops for Deco contrast</span></div></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- =============== ATELIER =============== -->
+<section id="atelier" class="atelier">
+  <div class="wrap">
+    <div class="at-text">
+      <div>
+        <h2>The atelier</h2>
+        <p class="lede muted" style="margin-top:20px">Limra Gems opened its doors more than twenty years ago as a dealer in loose stones. The workshop came later, when we found that the settings we wanted for our stones did not exist, so we learned to make them.</p>
+      </div>
+      <div class="cols">
+        <div><h3>Bespoke</h3><p class="muted">Bring a stone, a sketch, or a grandmother's ring. We draw, cast and set in-house, with a wax model to approve before any gold is poured. Most commissions take six to eight weeks.</p></div>
+        <div><h3>Care and repair</h3><p class="muted">Every Limra piece is cleaned, checked and re-tipped for life, free of charge. We also restore antique Deco jewellery that was not made by us.</p></div>
+      </div>
+    </div>
+    <div class="at-grid">
+      <div class="ph"><img src="assets/store-02.jpg" alt="Limra storefront signage" loading="lazy"></div>
+      <div class="ph"><img src="assets/ring-04.jpg" alt="Rings displayed on grey velvet stands in the showroom" loading="lazy"></div>
+      <div class="ph"><img src="assets/store-01.jpg" alt="Showroom window display" loading="lazy"></div>
+    </div>
+  </div>
+</section>
+
+<!-- =============== VISIT =============== -->
+<section id="visit" class="visit">
+  <div class="wrap visit-grid">
+    <div>
+      <h2>Visit the showroom</h2>
+      <p class="lede muted" style="margin-top:20px">Walk in any day, or book a private appointment to see stones from the vault. If you are abroad, we ship insured worldwide and arrange video viewings.</p>
+      <dl>
+        <dt>Showroom</dt><dd>Limra Gems, 14 Jewellers' Row, Ground floor<br>Open Monday to Saturday, 10:30 to 20:00</dd>
+        <dt>Phone</dt><dd><a href="tel:+910000000000">+91 00000 00000</a></dd>
+        <dt>WhatsApp</dt><dd><a href="https://wa.me/910000000000" rel="noopener">Message us</a></dd>
+        <dt>Email</dt><dd><a href="mailto:hello@limragems.com">hello@limragems.com</a></dd>
+        <dt>Instagram</dt><dd><a href="https://instagram.com/limragems" rel="noopener" target="_blank">@limragems</a></dd>
+      </dl>
+      <div class="ctas">
+        <a class="btn" href="https://wa.me/910000000000" rel="noopener">Book an appointment</a>
+        <a class="btn ghost" href="mailto:hello@limragems.com?subject=Bespoke%20enquiry">Start a bespoke enquiry</a>
+      </div>
+    </div>
+    <div class="ph"><img src="assets/model-ring-01.jpg" alt="Hand wearing a cushion aquamarine and sapphire ring" loading="lazy"></div>
+  </div>
+</section>
+
+</div><!-- /viewHome -->
+
+<!-- =============== CATEGORY VIEW =============== -->
+<div id="viewCat" hidden>
+  <section class="cat-head">
+    <div class="wrap">
+      <a class="back" href="#collections">All collections</a>
+      <div class="cat-head-grid">
+        <div>
+          <h1 id="catTitle"></h1>
+          <p class="lede muted" id="catLede" style="margin-top:20px"></p>
+          <p class="muted" id="catCount" style="margin-top:28px;font-size:14px"></p>
+        </div>
+        <div class="cat-hero"><img id="catImg" src="" alt=""></div>
+      </div>
+    </div>
+  </section>
+  <section class="cat-body" id="catBody">
+    <div class="wrap">
+      <div class="grid" id="catGrid"></div>
+      <div class="brace-feature" id="catFeature" hidden>
+        <div class="ph"><img src="assets/store-03.jpg" alt="Stack of diamond tennis bracelets on a display stand" loading="lazy"></div>
+        <div>
+          <h3 style="font-size:clamp(26px,2.8vw,38px);max-width:12em">Tennis rows, matched stone by stone</h3>
+          <p class="muted" style="margin-top:18px;max-width:30em">We buy diamonds and sapphires in lots and sort them ourselves, so every row sits level and every stone matches its neighbour in colour and cut. Available in 2mm to 4mm, in white, yellow or rose gold.</p>
+          <p style="margin-top:28px"><a class="textlink" href="#visit">Ask about a custom length</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="cat-more">
+    <div class="wrap">
+      <h2 style="font-size:clamp(28px,3vw,40px);margin-bottom:clamp(28px,3vw,44px)">Other collections</h2>
+      <div class="cats" id="catMore"></div>
+    </div>
+  </section>
+</div>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="top">
+      <a class="brand" href="#top" aria-label="Limra Gems home">
+        <svg viewBox="0 0 100 100" aria-hidden="true">
+          <polygon points="30,4 70,4 96,30 96,70 70,96 30,96 4,70 4,30" fill="none" stroke="#F3F2EF" stroke-width="3"/>
+          <text x="22" y="62" font-family="Bodoni Moda, Didot, serif" font-size="54" fill="#F3F2EF">L</text>
+          <text x="44" y="84" font-family="Bodoni Moda, Didot, serif" font-size="54" font-style="italic" fill="#F3F2EF">A</text>
+        </svg>
+        <span><span class="word">LIMRA</span><small>FINE JEWELRY · DIAMONDS · GEMSTONES</small></span>
+      </a>
+      <nav aria-label="Footer">
+        <a href="#/rings">Rings</a><a href="#/earrings">Earrings</a><a href="#/necklaces">Necklaces</a><a href="#/bracelets">Bracelets</a><a href="#stones">Stones</a><a href="#atelier">Atelier</a><a href="#visit">Visit</a>
+      </nav>
+    </div>
+    <div class="bottom">
+      <span>© <span id="yr"></span> Limra Gems. All stones natural and certified unless stated.</span>
+      <span>Free worldwide shipping, free returns within 14 days.</span>
+    </div>
+  </div>
+</footer>
+
+<!-- =============== LIGHTBOX =============== -->
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-labelledby="lbTitle" onclick="if(event.target===this)closeLb()">
+  <div class="lb-card">
+    <div class="lb-img"><img id="lbImg" src="" alt=""></div>
+    <div class="lb-body">
+      <button class="lb-close" aria-label="Close" onclick="closeLb()">×</button>
+      <div class="cat" id="lbCat"></div>
+      <h3 id="lbTitle"></h3>
+      <div class="price" id="lbPrice"></div>
+      <p class="muted" id="lbDesc"></p>
+      <dl id="lbSpecs"></dl>
+      <a class="btn" id="lbCta" href="#">Enquire about this piece</a>
+      <div class="lb-note">Every piece can be resized or made in a different gold colour. Prices are indicative and confirmed on enquiry.</div>
+    </div>
+  </div>
+</div>
+
+<script>
+const P = {
+  // ---- rings
+  r16:{cat:'Rings',name:'Nocturne',stone:'Tanzanite, sapphire, diamond',price:'$3,900',img:'ring-16.jpg',desc:'An oval tanzanite in a yellow gold bezel, framed by calibré sapphires and a scalloped diamond border in platinum.',specs:{Centre:'Oval tanzanite, 4.1 ct',Metal:'Platinum and 18k yellow gold',Setting:'Bezel with calibré frame'}},
+  r14:{cat:'Rings',name:'Aurora',stone:'Ethiopian opal, emerald, diamond',price:'$2,400',img:'ring-14.jpg',desc:'A crystal opal with full play of colour, ringed in round emeralds and set on a pavé diamond band.',specs:{Centre:'Oval opal, 5.2 ct',Metal:'18k white gold',Setting:'Halo, prong'}},
+  r11:{cat:'Rings',name:'Sovereign',stone:'Yellow diamond, emerald, diamond',price:'$4,800',img:'ring-11.jpg',desc:'An emerald-cut fancy yellow diamond inside a channel of square emeralds and a border of old-cut diamonds.',specs:{Centre:'Emerald-cut yellow diamond, 1.6 ct',Metal:'18k white and yellow gold',Setting:'Double frame'}},
+  r10:{cat:'Rings',name:'Boulevard plaque ring',stone:'Ruby, diamond',price:'$2,100',img:'ring-10.jpg',desc:'Three old-European diamonds along a platinum plaque, bordered by French-cut rubies in the pure Deco manner.',specs:{Centre:'Three old-cut diamonds, 0.9 ct total',Metal:'Platinum',Setting:'Plaque with calibré border'}},
+  r09:{cat:'Rings',name:'Crest',stone:'Yellow diamond, ruby, diamond',price:'$3,200',img:'ring-09.jpg',desc:'An oval yellow diamond under a cross of kite-shaped diamonds, outlined in rubies.',specs:{Centre:'Oval yellow diamond, 1.2 ct',Metal:'18k white gold',Setting:'Navette plaque'}},
+  r12:{cat:'Rings',name:'Lagoon',stone:'Paraíba tourmaline, emerald, diamond',price:'$2,700',img:'ring-12.jpg',desc:'A neon-blue tourmaline in a scrolled frame of emeralds and diamonds, on a slim knife-edge band.',specs:{Centre:'Oval tourmaline, 2.3 ct',Metal:'18k white gold',Setting:'Scrolled halo'}},
+  r15:{cat:'Rings',name:'Midnight',stone:'Tanzanite cabochon, diamond',price:'$3,400',img:'ring-15.jpg',desc:'A deep violet tanzanite cabochon in yellow gold, with a single row of brilliant diamonds.',specs:{Centre:'Cabochon tanzanite, 7.8 ct',Metal:'18k yellow and white gold',Setting:'Bezel halo'}},
+  r17:{cat:'Rings',name:'Carnival',stone:'Opal, multicolour sapphire, diamond',price:'$2,900',img:'ring-17.jpg',desc:'A large opal surrounded by oval sapphires in every colour of the rainbow, separated by diamond points.',specs:{Centre:'Oval opal, 9.4 ct',Metal:'18k white gold',Setting:'Cluster halo'}},
+  r05:{cat:'Rings',name:'Glacier',stone:'Aquamarine, sapphire, diamond',price:'$1,900',img:'ring-05.jpg',desc:'A cushion aquamarine in a square plaque of diamonds, outlined with a channel of blue sapphires.',specs:{Centre:'Cushion aquamarine, 2.8 ct',Metal:'Platinum',Setting:'Square plaque'}},
+  r13:{cat:'Rings',name:'Navette',stone:'Sapphire, emerald-cut diamond',price:'$1,600',img:'ring-13.jpg',desc:'Bullet-cut sapphires radiate from a small emerald-cut diamond on a pointed Deco navette.',specs:{Centre:'Emerald-cut diamond, 0.4 ct',Metal:'18k white gold',Setting:'Navette'}},
+  r06:{cat:'Rings',name:'Rosé',stone:'Pink tourmaline, diamond',price:'$2,200',img:'ring-06.jpg',desc:'A pear-shaped pink tourmaline in a fine diamond halo with baguette shoulders.',specs:{Centre:'Pear tourmaline, 3.0 ct',Metal:'18k white gold',Setting:'Halo with baguettes'}},
+  r07:{cat:'Rings',name:'Tide',stone:'Aquamarine, sapphire, diamond',price:'$2,500',img:'ring-07.jpg',desc:'A pear aquamarine within a halo of sapphires, the shoulders paved with diamonds.',specs:{Centre:'Pear aquamarine, 3.5 ct',Metal:'18k white gold',Setting:'Sapphire halo'}},
+  r08:{cat:'Rings',name:'Verdant',stone:'Emerald, diamond',price:'$2,800',img:'ring-08.jpg',desc:'A round emerald in a tiered Deco mount of baguette and round diamonds.',specs:{Centre:'Round emerald, 1.1 ct',Metal:'Platinum',Setting:'Tiered plaque'}},
+  h04:{cat:'Rings',name:'Twilight',stone:'Tanzanite, diamond',price:'$3,600',img:'hero-04.jpg',desc:'A pear tanzanite in a halo of diamonds, on a split pavé shank in rose and white gold.',specs:{Centre:'Pear tanzanite, 4.6 ct',Metal:'18k rose and white gold',Setting:'Halo, split shank'}},
+  h01:{cat:'Rings',name:'Channel band',stone:'Emerald, sapphire',price:'$1,700',img:'hero-01.jpg',desc:'A bezel-set emerald flanked by channels of square sapphires in a low, wearable profile.',specs:{Centre:'Round emerald, 0.8 ct',Metal:'18k white gold',Setting:'Bezel and channel'}},
+  // ---- earrings
+  e02:{cat:'Earrings',name:'Cascade chandeliers',stone:'Aquamarine, sapphire, diamond',price:'$3,600',img:'earring-02.jpg',desc:'Pear aquamarines suspended from sapphire tops, with a fringe of diamond drops that moves as you do.',specs:{Stones:'Pear aquamarine, 6.2 ct pair',Metal:'18k white and yellow gold',Length:'48 mm'}},
+  e04:{cat:'Earrings',name:'Ribbon drops',stone:'Sapphire, diamond',price:'$2,800',img:'earring-04.jpg',desc:'A diamond bow above a sapphire-lined pendeloque, in the manner of the 1925 Paris exhibition pieces.',specs:{Stones:'Calibré sapphire, old-cut diamond',Metal:'Platinum',Length:'42 mm'}},
+  e03:{cat:'Earrings',name:'Shield earrings',stone:'Emerald, baguette diamond',price:'$2,200',img:'earring-03.jpg',desc:'Geometric shields of baguette diamonds framed by square emeralds, hung from an emerald cabochon.',specs:{Stones:'Baguette diamond, square emerald',Metal:'Platinum',Length:'36 mm'}},
+  e06:{cat:'Earrings',name:'Pendulum drops',stone:'Sapphire cabochon, diamond',price:'$1,700',img:'earring-06.jpg',desc:'A sapphire cabochon swinging inside an open diamond teardrop.',specs:{Stones:'Cabochon sapphire, diamond',Metal:'18k white gold',Length:'38 mm'}},
+  e05:{cat:'Earrings',name:'Flare studs',stone:'Yellow diamond, ruby, diamond',price:'$3,100',img:'earring-05.jpg',desc:'Pear yellow diamonds inside a ruby channel and a yellow diamond border.',specs:{Stones:'Pear yellow diamond, 1.4 ct pair',Metal:'18k yellow gold',Length:'18 mm'}},
+  e01:{cat:'Earrings',name:'Metropolis drops',stone:'Yellow diamond, ruby, diamond',price:'$2,600',img:'earring-01.jpg',desc:'Skyscraper-stepped drops of old-cut diamonds with ruby chevrons, topped by a round yellow diamond.',specs:{Stones:'Old-cut diamond, calibré ruby',Metal:'Platinum',Length:'40 mm'}},
+  e08:{cat:'Earrings',name:'Oasis drops',stone:'Turquoise, diamond',price:'$1,400',img:'earring-08.jpg',desc:'Sleeping Beauty turquoise ovals on pierced yellow gold batons set with diamonds.',specs:{Stones:'Oval turquoise, diamond',Metal:'18k yellow gold',Length:'52 mm'}},
+  e09:{cat:'Earrings',name:'Noir drops',stone:'Onyx, diamond',price:'$2,300',img:'earring-09.jpg',desc:'Polished onyx drops with diamond collars, hung from onyx and diamond links.',specs:{Stones:'Onyx, round diamond',Metal:'18k white gold',Length:'46 mm'}},
+  e07:{cat:'Earrings',name:'Lagoon hoops',stone:'Turquoise, sapphire, diamond',price:'$1,900',img:'earring-07.jpg',desc:'Open teardrops of diamonds and sapphires with turquoise cabochons along the lower curve.',specs:{Stones:'Turquoise, sapphire, diamond',Metal:'18k white gold',Length:'34 mm'}},
+  h03:{cat:'Earrings',name:'Halo studs',stone:'Blue topaz, diamond',price:'$1,500',img:'hero-03.jpg',desc:'Oval Swiss-blue topaz in a classic diamond halo. Made for every day.',specs:{Stones:'Oval topaz, 3.2 ct pair',Metal:'18k white gold',Length:'12 mm'}},
+  b06:{cat:'Earrings',name:'Spectrum hoops',stone:'Multicolour sapphire',price:'$1,800',img:'bangle-06.jpg',desc:'Inside-out hoops channel-set with sapphires running through the whole spectrum.',specs:{Stones:'Square sapphire, 2.6 ct pair',Metal:'18k rose gold',Length:'22 mm'}},
+  // ---- necklaces
+  n01:{cat:'Necklaces',name:'Trellis necklace',stone:'Emerald, diamond',price:'$5,200',img:'necklace-01.jpg',desc:'A diamond line necklace with emerald florets and three graduated drops at the centre.',specs:{Stones:'Round emerald, diamond',Metal:'18k white gold',Length:'42 cm'}},
+  n02:{cat:'Necklaces',name:'Sky pendant',stone:'Blue topaz, diamond',price:'$1,600',img:'necklace-02.jpg',desc:'An oval blue topaz in a diamond halo on a fine yellow gold chain.',specs:{Stones:'Oval topaz, 4.0 ct',Metal:'18k yellow gold',Length:'45 cm'}},
+  mn1:{cat:'Necklaces',name:'Emerald strand',stone:'Emerald bead, diamond',price:'$2,900',img:'model-necklace-01.jpg',desc:'Faceted emerald beads with diamond rondelles, finished with a diamond clasp.',specs:{Stones:'Emerald bead, 38 ct',Metal:'18k white gold',Length:'44 cm'}},
+  mn2:{cat:'Necklaces',name:'Flower lariat',stone:'Sapphire, diamond',price:'$3,300',img:'model-necklace-02.jpg',desc:'A sapphire and diamond floret on a diamond-station chain, with a matching ring and bracelet.',specs:{Stones:'Oval sapphire, diamond',Metal:'18k white gold',Length:'50 cm adjustable'}},
+  mn3:{cat:'Necklaces',name:'Riviera strand',stone:'Coral, emerald, diamond',price:'$3,800',img:'model-necklace-03.jpg',desc:'Coral and emerald beads in alternating rows with diamond spacers and a diamond-set clasp.',specs:{Stones:'Coral, emerald bead',Metal:'18k yellow gold',Length:'46 cm'}},
+  h05:{cat:'Necklaces',name:'Aquamarine drop',stone:'Aquamarine, sapphire bead',price:'$2,100',img:'hero-05.jpg',desc:'A pear aquamarine pendant on a chain of sapphire beads, with matching drop earrings.',specs:{Stones:'Pear aquamarine, 3.8 ct',Metal:'18k white gold',Length:'42 cm'}},
+  me5:{cat:'Necklaces',name:'Morganite lariat',stone:'Morganite, diamond',price:'$2,400',img:'model-earring-05.jpg',desc:'Twin pink morganite drops on a diamond baton chain, with matching earrings.',specs:{Stones:'Round morganite, diamond',Metal:'18k rose and white gold',Length:'52 cm'}},
+  // ---- bracelets
+  b01:{cat:'Bracelets',name:'Meadow line bracelet',stone:'Emerald, yellow sapphire',price:'$3,400',img:'bangle-01.jpg',desc:'Oval emeralds and yellow sapphires in alternating bezels, in yellow gold.',specs:{Stones:'Emerald, yellow sapphire',Metal:'18k yellow gold',Length:'18 cm'}},
+  b02:{cat:'Bracelets',name:'Diamond tennis bracelet',stone:'Diamond',price:'$4,900',img:'bangle-02.jpg',desc:'Round brilliant diamonds in a four-prong row with a concealed box clasp.',specs:{Stones:'Round diamond, 5.0 ct total',Metal:'18k white gold',Length:'17.5 cm'}},
+  b03:{cat:'Bracelets',name:'Woven ruby bracelet',stone:'Ruby, diamond',price:'$4,200',img:'bangle-03.jpg',desc:'Three rows of baguette rubies woven through a diamond lattice.',specs:{Stones:'Baguette ruby, diamond',Metal:'18k white gold',Length:'17.5 cm'}},
+  b04:{cat:'Bracelets',name:'Ruby halo line bracelet',stone:'Ruby, diamond',price:'$4,600',img:'bangle-04.jpg',desc:'Oval rubies each in a small halo of diamonds, linked in yellow gold.',specs:{Stones:'Oval ruby, diamond',Metal:'18k yellow gold',Length:'18 cm'}},
+};
+
+function card(id, cls=''){
+  const p=P[id];
+  return `<button class="item ${cls}" onclick="openItem('${id}')" aria-label="${p.name}, ${p.stone}">
+    <div class="ph"><img src="assets/${p.img}" alt="${p.name} — ${p.stone}" loading="lazy"></div>
+    <div class="meta"><div><b>${p.name}</b><i>${p.stone}</i></div><div class="price">${p.price}</div></div>
+  </button>`;
+}
+// worn / model shots inserted into grids
+function model(img, alt, cls=''){
+  return `<div class="item model ${cls}" aria-hidden="true"><div class="ph"><img src="assets/${img}" alt="${alt}" loading="lazy"></div></div>`;
+}
+
+const CATS = {
+  rings:{title:'Rings',lede:'Each ring is built around one stone. The frame — a halo, a plaque, a bezel — is drawn to suit that stone alone.',img:'ring-08.jpg',alt:'Emerald Deco ring worn on hand',tile:'ring-16.jpg',sub:'Cocktail, plaque and halo settings',
+    items:[['r16'],['r14'],['r11'],['r10'],['r09'],['r12'],['r15'],['m','ring-04.jpg','Rings on velvet stands in the showroom'],['r17'],['r05'],['r13'],['h04'],['r06'],['r07'],['h01'],['m','ring-03.jpg','Rings displayed in the showroom window']]},
+  earrings:{title:'Earrings',lede:'Articulated drops that move with you, chandeliers for the long evening, and studs built to be worn every day.',img:'model-earring-02.jpg',alt:'Model wearing sapphire and diamond drop earrings',tile:'earring-02.jpg',sub:'Drops, chandeliers and studs',
+    items:[['e02'],['e04'],['e03'],['m','model-earring-04.jpg','Model wearing coral, emerald and diamond drop earrings'],['e06'],['e05'],['e01'],['e08'],['m','model-earring-03.jpg','Model wearing ruby and onyx geometric earrings'],['e09'],['e07'],['h03'],['b06'],['m','earring-10.jpg','Model wearing sapphire drop earrings'],['m','model-earring-01.jpg','Model wearing diamond drop earrings and pendant'],['m','model-earring-06.jpg','Model wearing morganite drop earring']]},
+  necklaces:{title:'Necklaces',lede:'Pendants on fine chain, bead strands of emerald and coral, and lariats that sit exactly where the collarbone meets the light.',img:'model-necklace-01.jpg',alt:'Model wearing emerald bead strand',tile:'model-necklace-02.jpg',sub:'Pendants, lariats and strands',
+    items:[['n01'],['n02'],['mn2'],['m','model-necklace-01.jpg','Model wearing emerald bead strand'],['mn3'],['h05'],['me5'],['mn1']]},
+  bracelets:{title:'Bracelets',lede:'Line bracelets in a single stone, or alternating pairs. Set in 18k gold with a concealed box clasp and safety catch.',img:'bangle-05.jpg',alt:'Emerald and ruby line bracelet on wrist',tile:'bangle-05.jpg',sub:'Line bracelets and tennis rows',dark:true,
+    items:[['b02'],['b04'],['b01'],['b03']]},
+};
+
+const viewHome=document.getElementById('viewHome'), viewCat=document.getElementById('viewCat');
+function renderCat(key){
+  const c=CATS[key];
+  document.getElementById('catTitle').textContent=c.title;
+  document.getElementById('catLede').textContent=c.lede;
+  const n=c.items.filter(i=>i[0]!=='m').length;
+  document.getElementById('catCount').textContent=n+' pieces. Click any piece for details and to enquire.';
+  const im=document.getElementById('catImg'); im.src='assets/'+c.img; im.alt=c.alt;
+  const grid=document.getElementById('catGrid');
+  grid.className='grid'+(c.dark?' wide-rows':'');
+  grid.innerHTML=c.items.map(i=>i[0]==='m'?model(i[1],i[2]):card(i[0])).join('');
+  document.getElementById('catBody').className='cat-body'+(c.dark?' dark':'');
+  document.getElementById('catFeature').hidden=!c.dark;
+  document.getElementById('catMore').innerHTML=Object.entries(CATS).filter(([k])=>k!==key).map(([k,o])=>
+    `<a class="cat" href="#/${k}"><div class="oct"><img src="assets/${o.tile}" alt="${o.title}" loading="lazy"></div><h3>${o.title}</h3><span>${o.sub}</span></a>`).join('');
+  document.title=c.title+' — Limra Gems';
+}
+function route(){
+  const h=location.hash;
+  const m=h.match(/^#\/(rings|earrings|necklaces|bracelets)$/);
+  if(m){
+    renderCat(m[1]); viewHome.hidden=true; viewCat.hidden=false; window.scrollTo(0,0);
+  }else{
+    viewCat.hidden=true; viewHome.hidden=false; document.title='Limra Gems — Fine Jewelry, Diamonds & Gemstones';
+    const id=h.replace('#',''); const el=id&&document.getElementById(id);
+    if(el){ el.scrollIntoView({behavior:'auto'}); } else if(h==='#top'||h===''){ window.scrollTo(0,0); }
+  }
+}
+window.addEventListener('hashchange',route);
+route();
+
+// lightbox
+const lb=document.getElementById('lb');
+let lastFocus=null;
+function openItem(id){
+  const p=P[id]; lastFocus=document.activeElement;
+  document.getElementById('lbImg').src='assets/'+p.img;
+  document.getElementById('lbImg').alt=p.name+' — '+p.stone;
+  document.getElementById('lbCat').textContent=p.cat;
+  document.getElementById('lbTitle').textContent=p.name;
+  document.getElementById('lbPrice').textContent=p.price;
+  document.getElementById('lbDesc').textContent=p.desc;
+  document.getElementById('lbSpecs').innerHTML=Object.entries(p.specs).map(([k,v])=>`<dt>${k}</dt><dd>${v}</dd>`).join('');
+  document.getElementById('lbCta').href='https://wa.me/910000000000?text='+encodeURIComponent('Hello Limra, I would like to enquire about the '+p.name+' ('+p.stone+').');
+  lb.classList.add('open'); document.body.style.overflow='hidden';
+  document.querySelector('.lb-close').focus();
+}
+function closeLb(){lb.classList.remove('open');document.body.style.overflow='';if(lastFocus)lastFocus.focus();}
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&lb.classList.contains('open'))closeLb();});
+
+function toggleMenu(btn){const m=document.getElementById('mobileMenu');const o=m.classList.toggle('open');btn.setAttribute('aria-expanded',o);}
+document.querySelectorAll('.mobile-menu a').forEach(a=>a.addEventListener('click',()=>{document.getElementById('mobileMenu').classList.remove('open');}));
+document.getElementById('yr').textContent=new Date().getFullYear();
+</script>
+</body>
+</html>
